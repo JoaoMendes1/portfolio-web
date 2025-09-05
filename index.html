@@ -1,11 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>João Victor Mendes | Desenvolvedor Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  
+<!--================================START HEADER================================-->
+<header class="header">
+  <nav class="nav container">
+    <a href="#" class="nav__logo">João Victor Mendes</a>
+    <div class="nav__menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#home" class="nav__link">Início</a></li>
+        <li class="nav__item"><a href="#projects" class="nav__link">Projetos</a></li>
+        <li class="nav__item"><a href="#contact" class="nav__link">Contatos</a></li>
+      </ul>
+      <div class="theme-toggle" id="theme-toggle">
+        <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0Zm12.44 4.06a.75.75 0 0 1-.976 1.056l-1.95-1.07a.75.75 0 0 1 .976-1.056l1.95 1.07ZM12 21a.75.75 0 0 1-.75-.75v-2.25a.75.75 0 0 1 1.5 0V20.25a.75.75 0 0 1-.75.75ZM4.06 4.94a.75.75 0 0 1 1.056-.976l1.95 1.07a.75.75 0 1 1-.976 1.056l-1.95-1.07ZM17.94 19.06a.75.75 0 0 1 .976 1.056l-1.95 1.07a.75.75 0 0 1-.976-1.056l1.95-1.07ZM4.94 17.94a.75.75 0 0 1-.976-1.056l1.95-1.07a.75.75 0 1 1 .976 1.056l-1.95 1.07ZM2.25 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75ZM18.75 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H19.5a.75.75 0 0 1-.75-.75Z"/></svg>
+                    <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69a.75.75 0 0 1 .981.981A10.503 10.503 0 0 1 12 22.5a10.5 10.5 0 0 1-10.5-10.5c0-4.306 2.56-8.007 6.22-9.664a.75.75 0 0 1 .819.162Z" clip-rule="evenodd"/></svg>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!--================================START MAIN================================-->
+<main>
+  <section class="hero section" id="home">
+    <div class="hero__container container">
+      <h1 class="hero__title hidden">Olá, eu sou o João</h1>
+      <p class="hero__subtitle hidden">Desenvolvedor apaixonado por criar experiências digitais interativas.</p>
+      <div class="hero__buttons hidden">
+        <a href="#projects" class="button button--primary">Ver os meus projetos</a>
+        <a href="#contact" class="button button--secondary">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects section" id="projects">
+    <h2 class="section__title hidden">Projetos</h2>
+    <div class="projects__container container">
+
+      <div class="project-card hidden" data-tilt>
+        <img src="https://via.placeholder.com/400x250/8e44ad/ffffff?text=Dashboard" alt="Imagem do Projeto Dashboard" class="project-card__img">
+        <div class="project-card__content">
+          <h3 class="project-card__title">Dashboard Admin</h3>
+          <p class="project-card__description">Um dashboard responsivo construído com HTML, CSS e JavaScript puro.</p>
+          <div class="project-card__tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <div class="project-card__links">
+            <a href="#" class="card-link">Ver ao Vivo</a>
+            <a href="#" class="card-link">Ver o Código</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card hidden" data-tilt>
+        <img src="https://via.placeholder.com/400x250/8A2BE2/121212?text=Projeto+React" alt="Imagem do projeto React" class="project-card__img">
+        <div class="project-card__content">
+          <h3 class="project-card__title">App de E-commerce</h3>
+          <p class="project-card__description">Uma interface de loja virtual construída com react e consumo de API</p>
+          <div class="project-card__tags">
+            <span>React</span>
+            <span>API</span>
+            <span>Styled-Components</span>
+          </div>
+          <div class="project-card__links">
+            <a href="#" class="card-link">Ver ao Vivo</a>
+            <a href="#" class="card-link">Ver o código</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card hidden" data-tilt>
+        <img src="https://via.placeholder.com/400x250/2ECC71/121212?text=Game+Vue.js" alt="Imagem de um projeto Vue" class="project-card__img">
+        <div class="project-card__content">
+          <h3 class="project-card__title">Jogo da memória</h3>
+          <p class="project-card__description">Um jogo da memória interativo feito com o framework Vue.js</p>
+          <div class="project-card__tags">
+            <span>Vue.js</span>
+            <span>CSS Grid</span>
+          </div>
+          <div class="project-card__links">
+            <a href="#" class="card-link">Ver ao Vivo</a>
+            <a href="#" class="card-link">Ver o Código</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="contact section" id="contact">
+    <div class="contact__container container">
+      <h2 class="section__title hidden">Vamos conversar?</h2>
+      <p class="contact__description hidden">Estou sempre aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contacto.</p>
+      <a href="mailto:joaodev21@gmail.com" class="button button--primary hidden">Enviar um e-mail</a>
+    </div>
+  </section>
+</main>
+
+<!--================================START FOOTER================================-->
+
+<footer class="footer">
+  <div class="footer__container container">
+    <p>&copy; 2025 João Victor Mendes. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+<script defer src="assets/js/main.js"></script>
+
 </body>
 </html>
