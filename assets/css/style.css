@@ -1,16 +1,1 @@
-/* ==================== CONFIGURAÇÕES GERAIS E VARIÁVEIS ==================== */
-/* A pseudo-classe :root representa o elemento <html> e é o local ideal
-  para declarar variáveis CSS globais. Pense nisto como o nosso "painel de controlo" 
-  de design, permitindo-nos reutilizar valores e fazer alterações em todo o site
-  de forma fácil e rápida.
-*/
-:root {
-    /* Gradiente de Destaque: As cores principais que dão personalidade ao site */
-    --gradient-start: #3498DB;
-    --gradient-end: #8E44AD;
-    --gradient-background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-
-    /* Fontes: Definimos os nomes das famílias de fontes que importámos no HTML */
-    --font-titles: 'Poppins', sans-serif;
-    --font-body: 'Lato', sans-serif;
-}
+/* t */
