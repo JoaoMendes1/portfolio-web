@@ -1,1 +1,81 @@
-/* t */
+/* ==================== CONFIGURAÇÕES GERAIS E VARIÁVEIS ====================  */
+
+:root {
+  /* gradiente de destaque: As cores principais que dão personalidade ao site */
+  --gradient-start: #3498DB;
+  --gradient-star: #8E44AD;
+  --gradient-end: #5E44AD;
+  --gradient-background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+
+  /* Fontes: Definimos os nomes das famílias de fontes que importámos no HTML */
+  --font-tittles: 'Proppins', sans-serif;
+  --font-body: 'Lato', sans-serif;
+}
+
+/* ==================== TEMAS ==================== */
+/* Aqui definimos as variáveis de cor específicas para cada tema.
+  O JavaScript vai adicionar/remover estas classes do <body> para trocar de cores. 
+*/
+
+body.dark-thme {
+  /* Cores para o modo escuro */
+  --color-background: #0D1117;         /* Um preto azulado, mais suave que o preto puro */
+  --color-card-background: #161B22;
+  --color-text: #E0E0E0;
+  --color-border: #30363D;
+}
+
+body.light-theme {
+  /* Cores para o modo claro */
+  --color-background: #F4F6F8;
+  --color-card-background: #FFFFFF;
+  --color-text: #2C3E50;
+  --color-border: #E0E0E0;
+}
+
+/* ==================== RESET BÁSICO E ESTILOS GLOBAIS ==================== */
+/* O seletor universal (*) aplica estas regras a TODOS os elementos.
+  Isto é um "reset" para remover margens e paddings padrão dos navegadores,
+  garantindo uma base consistente para começar.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 1 das regras mais importantes! Faz com que padding e border não aumentem o tamanho final do elemento.*/
+}
+
+/* Faz com que a rolagem da página seja suave ao clicar em links internos (ex: <a href="#projects">) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos aplicados a toda a página */
+body {
+  /* Usamos nossas variáveis para definir as cores e fontes padrão */
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: var(--font-body);
+
+  /* Melhora a legibilidade do texto */
+  line-height: 1.6;
+
+  /* Adiciona uma transição suave quando mudamos de tema */
+  transition: background-color 0.3, color 0.3;
+}
+
+/* Estilo padrão para todos os links */
+a{
+  color: var(--gradient-start);
+  text-decoration: none; 
+  transition: color 0.3;
+}
+
+a:hover {
+  color: var(--gradient-end);
+}
+
+/* Remove os marcadores de lista (Bolinhas) */
+ul {
+  list-style: none;
+}
