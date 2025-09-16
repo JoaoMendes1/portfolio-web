@@ -373,6 +373,35 @@ body.light-theme .project-card:hover {
     display: flex;
     gap: 1.5rem;
 }
+
+/* ==================== SECÇÃO CONTACTO ==================== */
+
+.contact__container {
+  /* Centraliza todo o conteúdo (título, parágrafo e botão) desta secção */
+  text-align: center;
+
+   /* Define uma largura máxima para o conteúdo de texto, 
+       melhorando a legibilidade em ecrãs muito largos.
+    */
+    max-width: 600px;
+}
+
+.contact__decription {
+  /* adiciona um espaçamento abaixo do parágrafo, antes do botão */
+  margin-bottom: 2rem;
+}
+
+/* ==================== RODAPÉ (FOOTER) ==================== */
+
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+
+/* Cria uma linha subtil no topo do rodapé para o separar visualmente do resto do conteúdo */
+  border-top: 1px solid var(--color-border);
+}
   
     
 
