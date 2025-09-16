@@ -281,6 +281,102 @@ body.dark-theme-theme .theme-toggle__moon {
     border-color: transparent;
 }
 
+/* ==================== SECÇÃO PROJETOS ==================== */
+
+/* A "magia" da nossa galeria responsiva acontece aqui, com o CSS Grid */
+.projects__container {
+  display: grid; /* Ativa o layout de grelha */
+
+    /* Esta é a linha mais importante:
+       - repeat: Diz para repetir um padrão.
+       - auto-fit: Diz para criar quantas colunas couberem no espaço disponível.
+       - minmax(300px, 1fr): Diz que cada coluna deve ter no mínimo 300px de largura e,
+         no máximo, ocupar uma fração (1fr) do espaço igualitário disponível.
+       O resultado é uma grelha que se ajusta de 3, para 2, para 1 coluna automaticamente.
+    */
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Define o espaçamento entre os cartões*/
+}
+
+.project-card {
+  background-color: var(--color-card-background);
+  border-radius: 12px; /* Cantos arredondados */
+  overflow: hidden; /* Garante que a imagem, que está dentro do card, também tenha os cantos cortados e arredondados */ 
+  border: 1px solid var(--color-border);
+  transition: all 0.3s;
+
+  /* Estas duas propriedades são necessárias para que o efeito 3D da biblioteca tilt.js funcione corretamente */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+
+    /* Otimização de performance para a animação */
+    will-change: transform;
+}
+
+.project-card:hover {
+  /* efeito de levantar o cartão no hover */
+  transform: translateY(-5px);
+}
+
+/* Sombras diferentes para cada tema, para melhor visibilidade */
+body.dark-theme .project-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .project-card {
+    box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
+}
+
+body.light-theme .project-card:hover {
+    box-shadow: 0 10px 20px rgba(44, 62, 80, 0.15);
+}
+
+/* Estilização dos Elementos BEM dentro do cartão */
+
+.project-card__img {
+    width: 100%;
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove pequenos espaços em branco que a tag <img> por vezes tem */
+}
+
+/* Adiciona um pequeno "empurrão" para a frente no efeito 3D */
+.project-card__content {
+    padding: 1.5rem;
+    transform: translateZ(20px);
+}
+
+.project-card__title {
+    font-family: var(--font-titles);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.project-card__tags {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilo das "pílulas" de tecnologia */
+.project-card__tags span {
+    background: var(--gradient-background);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.project-card__links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.5rem;
+}
+  
+    
+
+
 
 
 
