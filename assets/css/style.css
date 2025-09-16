@@ -79,3 +79,210 @@ a:hover {
 ul {
   list-style: none;
 }
+
+/* ==================== CLASSES UTILITÁRIAS ==================== */
+/* Estas são classes "ajudantes" que podemos reutilizar em várias secções.
+   Neste caso, .container limita a largura do nosso conteúdo para que não se
+   estique demasiado em ecrãs grandes, e .section define um espaçamento padrão.
+*/
+.container {
+    max-width: 1120px;
+    margin-left: auto;  /* Juntos, margin-left e margin-right auto centralizam o container */
+    margin-right: auto;
+    padding-left: 2rem; /* Um pequeno espaçamento nas laterais para não colar nas bordas */
+    padding-right: 2rem;
+}
+
+.section {
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+}
+
+.section__title {
+  font-family: var(--font-tittles);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* ==================== CABEÇALHO E NAVEGAÇÃO ==================== */
+.header {
+  width: 100%;
+  position: fixed; /* Fixa o header no topo da janela de visualização */
+  top: 0;
+  left: 0;
+  z-index: 100; /* Garante que o header fique acima de outros conteúdos */
+
+  /* Efeito de vidro: um fundo semi-transparente com desfoque */
+  background-color: rgba(13, 17, 23, 0.8); /* Cor base do nosso tema escuro, com 80% de opacidade */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Regra específica para o header no tema claro */
+body.light-theme .header {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.nav {
+    height: 4.5rem; /* Define a altura do nosso cabeçalho */
+    display: flex; /* Ativa o Flexbox para alinhar os itens */
+    justify-content: space-between; /* Coloca espaço máximo entre os itens (logo para um lado, menu para o outro) */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.nav__logo {
+  font-family: var(--font-tittles);
+  font-weight: 700;
+  color: var(--color-text); /* Garante que o logo use a cor de texto do tema */
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Espaçamento entre a lista de links e o botão de tema */
+}
+
+.nav__list {
+  display: flex;
+  gap: 2rem; /* Espaçamento entre cada item do menu */
+}
+
+.nav__link {
+  color: var(--color-text);
+  font-weight: 700;
+  position: relative; /* É Necessário para o efeito de sublinhado animado */
+  padding-bottom: 0.25rem;
+}
+
+/* Efeito de sublinhado animado usando um pseudo-elemento ::after */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background: var(--gradient-background);
+  transition: width 0.3s ease-in-out; /* Anima a propriedade 'width' */
+}
+
+.nav__link:hover::after {
+  width: 100%;  /* No hover, a largura vai para 100% (visível) */
+}
+
+/* ==================== SELETOR DE TEMA ==================== */
+.theme-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text);
+}
+
+/* Esconde a lua por padrão (no tema escuro) */
+.theme-toggle__moon {
+  display: none;
+}
+
+/* Lógica de exibição dos ícones com base no tema */
+
+body.light-theme .theme-toggle__moon {
+  display: block;
+}
+
+body.ligh-theme .theme-toggle__sun {
+  display: none;
+}
+
+body.dark-theme .theme-toggle__sun {
+  display: block;
+}
+
+body.dark-theme-theme .theme-toggle__moon {
+  display: none;
+}
+
+/* ==================== SECÇÃO HERO ==================== */
+
+.gero {
+  max-height: 100vh; /* Garante que a secção ocupe a altura total do ecrâ */
+  display: flex;
+  align-items: center; /* Alinha o conteúdo verticalmente ao centro */
+  justify-content: center; /* Alinha o conteúdo horizontalmente ao centro */
+  text-align: center; /* Garante que o texto fique alinhado */
+}
+
+.hero__title {
+  font-family: var(--font-tittles);
+  font-size: 3.5rem;
+  /* Efeito de Texto com Gradiente: o fundo é o nosso gradiente, mas é recortado para ser visível apenas no formato do texto. */
+  background: var(--gradient-background);
+  -webkit-background-clip: text; /* Prefixo para compatibilidade com navegadores mais antigos */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Torna a cor do texto transparente para que o fundo (gradiente) seja visível */
+}
+  .hero__subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* ==================== BOTÕES ==================== */
+
+  .button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+  }
+
+  .button:hover {
+    transform: translateY(-3px); /* Efeito de "levantar" o botão */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.2); /* Aumenta ligeiramente o brilho no hover */
+}
+
+.button--primary {
+    background-image: var(--gradient-background);
+    color: #fff;
+}
+
+.button--secondary {
+    background-color: transparent;
+    color: var(--color-text);
+    /* Cria uma borda usando o nosso gradiente */
+    border-image: var(--gradient-background);
+    border-image-slice: 1;
+    border-width: 2px;
+}
+
+/* Regra específica para garantir que o texto dos botões fique branco no hover */
+.button--primary:hover,
+.button--secondary:hover {
+    color: #fff;
+}
+
+/* Efeito de preenchimento para o botão secundário no hover */
+.button--secondary:hover {
+    background: var(--gradient-background);
+    border-image: none;
+    border-color: transparent;
+}
+
+
+
+
+
+
