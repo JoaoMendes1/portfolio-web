@@ -1,105 +1,84 @@
-/* ==================== CONFIGURAÇÕES GERAIS E VARIÁVEIS ====================  */
-
+/* ==================== CONFIGURAÇÕES GERAIS E VARIÁVEIS ==================== */
 :root {
-  /* gradiente de destaque: As cores principais que dão personalidade ao site */
   --gradient-start: #3498DB;
-  --gradient-star: #8E44AD;
-  --gradient-end: #5E44AD;
+  --gradient-end: #8E44AD;
   --gradient-background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-
-  /* Fontes: Definimos os nomes das famílias de fontes que importámos no HTML */
-  --font-tittles: 'Proppins', sans-serif;
+  --font-titles: 'Poppins', sans-serif;
   --font-body: 'Lato', sans-serif;
 }
 
 /* ==================== TEMAS ==================== */
-/* Aqui definimos as variáveis de cor específicas para cada tema.
-  O JavaScript vai adicionar/remover estas classes do <body> para trocar de cores. 
-*/
-
-body.dark-thme {
-  /* Cores para o modo escuro */
-  --color-background: #0D1117;         /* Um preto azulado, mais suave que o preto puro */
+body.dark-theme {
+  --color-background: #0D1117;
   --color-card-background: #161B22;
   --color-text: #E0E0E0;
-  --color-border: #30363D;
+  --color-border: #30363d;
+  --color-header-bg: rgba(13, 17, 23, 0.8);
+  background-color: #0D1117;
+  background-image:
+    radial-gradient(at 80% 20%, hsla(215, 70%, 30%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, hsla(285, 70%, 30%, 0.25) 0px, transparent 50%);
 }
 
 body.light-theme {
-  /* Cores para o modo claro */
   --color-background: #F4F6F8;
   --color-card-background: #FFFFFF;
-  --color-text: #2C3E50;
+  --color-text: #2c3e50;
   --color-border: #E0E0E0;
+  --color-header-bg: rgba(255, 255, 255, 0.8);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Cpath d='M0 2a2 2 0 0 0 4 0a2 2 0 0 0-4 0z' fill='%232c3e50' opacity='0.05'/%3E%3C/svg%3E");
 }
 
 /* ==================== RESET BÁSICO E ESTILOS GLOBAIS ==================== */
-/* O seletor universal (*) aplica estas regras a TODOS os elementos.
-  Isto é um "reset" para remover margens e paddings padrão dos navegadores,
-  garantindo uma base consistente para começar.
-*/
-
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* 1 das regras mais importantes! Faz com que padding e border não aumentem o tamanho final do elemento.*/
+  box-sizing: border-box;
 }
 
-/* Faz com que a rolagem da página seja suave ao clicar em links internos (ex: <a href="#projects">) */
 html {
   scroll-behavior: smooth;
 }
 
-/* Estilos aplicados a toda a página */
 body {
-  /* Usamos nossas variáveis para definir as cores e fontes padrão */
   color: var(--color-text);
   background-color: var(--color-background);
   font-family: var(--font-body);
-
-  /* Melhora a legibilidade do texto */
   line-height: 1.6;
-
-  /* Adiciona uma transição suave quando mudamos de tema */
-  transition: background-color 0.3, color 0.3;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Estilo padrão para todos os links */
-a{
+a {
   color: var(--gradient-start);
-  text-decoration: none; 
-  transition: color 0.3;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 a:hover {
   color: var(--gradient-end);
 }
 
-/* Remove os marcadores de lista (Bolinhas) */
 ul {
   list-style: none;
 }
 
-/* ==================== CLASSES UTILITÁRIAS ==================== */
-/* Estas são classes "ajudantes" que podemos reutilizar em várias secções.
-   Neste caso, .container limita a largura do nosso conteúdo para que não se
-   estique demasiado em ecrãs grandes, e .section define um espaçamento padrão.
-*/
 .container {
-    max-width: 1120px;
-    margin-left: auto;  /* Juntos, margin-left e margin-right auto centralizam o container */
-    margin-right: auto;
-    padding-left: 2rem; /* Um pequeno espaçamento nas laterais para não colar nas bordas */
-    padding-right: 2rem;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .section {
-    padding-top: 6rem;
-    padding-bottom: 2rem;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .section__title {
-  font-family: var(--font-tittles);
+  font-family: var(--font-titles);
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
@@ -108,66 +87,59 @@ ul {
 /* ==================== CABEÇALHO E NAVEGAÇÃO ==================== */
 .header {
   width: 100%;
-  position: fixed; /* Fixa o header no topo da janela de visualização */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 100; /* Garante que o header fique acima de outros conteúdos */
-
-  /* Efeito de vidro: um fundo semi-transparente com desfoque */
-  background-color: rgba(13, 17, 23, 0.8); /* Cor base do nosso tema escuro, com 80% de opacidade */
+  z-index: 100;
+  background-color: var(--color-header-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Regra específica para o header no tema claro */
-body.light-theme .header {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
 .nav {
-    height: 4.5rem; /* Define a altura do nosso cabeçalho */
-    display: flex; /* Ativa o Flexbox para alinhar os itens */
-    justify-content: space-between; /* Coloca espaço máximo entre os itens (logo para um lado, menu para o outro) */
-    align-items: center; /* Alinha os itens verticalmente ao centro */
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav__logo {
-  font-family: var(--font-tittles);
+  font-family: var(--font-titles);
   font-weight: 700;
-  color: var(--color-text); /* Garante que o logo use a cor de texto do tema */
+  color: var(--color-text);
 }
 
 .nav__menu {
   display: flex;
   align-items: center;
-  gap: 2rem; /* Espaçamento entre a lista de links e o botão de tema */
+  gap: 2rem;
 }
 
 .nav__list {
   display: flex;
-  gap: 2rem; /* Espaçamento entre cada item do menu */
+  gap: 2rem;
 }
 
 .nav__link {
   color: var(--color-text);
   font-weight: 700;
-  position: relative; /* É Necessário para o efeito de sublinhado animado */
+  position: relative;
   padding-bottom: 0.25rem;
 }
 
-/* Efeito de sublinhado animado usando um pseudo-elemento ::after */
 .nav__link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
+  height: 2px;
   background: var(--gradient-background);
-  transition: width 0.3s ease-in-out; /* Anima a propriedade 'width' */
+  transition: width 0.3s ease-in-out;
 }
 
 .nav__link:hover::after {
-  width: 100%;  /* No hover, a largura vai para 100% (visível) */
+  width: 100%;
 }
 
 /* ==================== SELETOR DE TEMA ==================== */
@@ -184,230 +156,540 @@ body.light-theme .header {
   color: var(--color-text);
 }
 
-/* Esconde a lua por padrão (no tema escuro) */
 .theme-toggle__moon {
   display: none;
 }
 
-/* Lógica de exibição dos ícones com base no tema */
-
 body.light-theme .theme-toggle__moon {
   display: block;
 }
-
-body.ligh-theme .theme-toggle__sun {
+body.light-theme .theme-toggle__sun {
   display: none;
 }
-
 body.dark-theme .theme-toggle__sun {
   display: block;
 }
-
-body.dark-theme-theme .theme-toggle__moon {
+body.dark-theme .theme-toggle__moon {
   display: none;
 }
 
 /* ==================== SECÇÃO HERO ==================== */
-
-.gero {
-  max-height: 100vh; /* Garante que a secção ocupe a altura total do ecrâ */
+.hero {
+  min-height: 100vh;
   display: flex;
-  align-items: center; /* Alinha o conteúdo verticalmente ao centro */
-  justify-content: center; /* Alinha o conteúdo horizontalmente ao centro */
-  text-align: center; /* Garante que o texto fique alinhado */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .hero__title {
-  font-family: var(--font-tittles);
+  font-family: var(--font-titles);
   font-size: 3.5rem;
-  /* Efeito de Texto com Gradiente: o fundo é o nosso gradiente, mas é recortado para ser visível apenas no formato do texto. */
-  background: var(--gradient-background);
-  -webkit-background-clip: text; /* Prefixo para compatibilidade com navegadores mais antigos */
-  background-clip: text;
-  -webkit-text-fill-color: transparent; /* Torna a cor do texto transparente para que o fundo (gradiente) seja visível */
+  margin-bottom: 1rem;
+  color: var(--color-text);
 }
-  .hero__subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-  }
 
-  .hero__buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
+body.dark-theme .hero__title {
+  background: var(--gradient-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  /* ==================== BOTÕES ==================== */
+.hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+}
 
-  .button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    transition: all 0.3s ease-in-out;
-    border: 2px solid transparent;
-  }
+.hero__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
 
-  .button:hover {
-    transform: translateY(-3px); /* Efeito de "levantar" o botão */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    filter: brightness(1.2); /* Aumenta ligeiramente o brilho no hover */
+/* ==================== BOTÕES ==================== */
+.button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+  will-change: transform;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.2);
 }
 
 .button--primary {
-    background-image: var(--gradient-background);
-    color: #fff;
+  background-image: var(--gradient-background);
+  color: #fff;
 }
 
 .button--secondary {
-    background-color: transparent;
-    color: var(--color-text);
-    /* Cria uma borda usando o nosso gradiente */
-    border-image: var(--gradient-background);
-    border-image-slice: 1;
-    border-width: 2px;
+  background-color: transparent;
+  color: var(--color-text);
+  border-image: var(--gradient-background);
+  border-image-slice: 1;
+  border-width: 2px;
 }
 
-/* Regra específica para garantir que o texto dos botões fique branco no hover */
 .button--primary:hover,
 .button--secondary:hover {
-    color: #fff;
+  color: #fff;
 }
 
-/* Efeito de preenchimento para o botão secundário no hover */
 .button--secondary:hover {
-    background: var(--gradient-background);
-    border-image: none;
-    border-color: transparent;
+  background: var(--gradient-background);
+  border-image: none;
+  border-color: transparent;
 }
 
 /* ==================== SECÇÃO PROJETOS ==================== */
-
-/* A "magia" da nossa galeria responsiva acontece aqui, com o CSS Grid */
 .projects__container {
-  display: grid; /* Ativa o layout de grelha */
-
-    /* Esta é a linha mais importante:
-       - repeat: Diz para repetir um padrão.
-       - auto-fit: Diz para criar quantas colunas couberem no espaço disponível.
-       - minmax(300px, 1fr): Diz que cada coluna deve ter no mínimo 300px de largura e,
-         no máximo, ocupar uma fração (1fr) do espaço igualitário disponível.
-       O resultado é uma grelha que se ajusta de 3, para 2, para 1 coluna automaticamente.
-    */
-
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; /* Define o espaçamento entre os cartões*/
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .project-card {
   background-color: var(--color-card-background);
-  border-radius: 12px; /* Cantos arredondados */
-  overflow: hidden; /* Garante que a imagem, que está dentro do card, também tenha os cantos cortados e arredondados */ 
+  border-radius: 12px;
+  overflow: hidden;
   border: 1px solid var(--color-border);
   transition: all 0.3s;
-
-  /* Estas duas propriedades são necessárias para que o efeito 3D da biblioteca tilt.js funcione corretamente */
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
-
-    /* Otimização de performance para a animação */
-    will-change: transform;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  will-change: transform;
 }
 
 .project-card:hover {
-  /* efeito de levantar o cartão no hover */
   transform: translateY(-5px);
 }
 
-/* Sombras diferentes para cada tema, para melhor visibilidade */
 body.dark-theme .project-card:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 body.light-theme .project-card {
-    box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
+  box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
 }
 
 body.light-theme .project-card:hover {
-    box-shadow: 0 10px 20px rgba(44, 62, 80, 0.15);
+  box-shadow: 0 10px 20px rgba(44, 62, 80, 0.15);
 }
-
-/* Estilização dos Elementos BEM dentro do cartão */
 
 .project-card__img {
-    width: 100%;
-    height: auto; /* Mantém a proporção da imagem */
-    display: block; /* Remove pequenos espaços em branco que a tag <img> por vezes tem */
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Adiciona um pequeno "empurrão" para a frente no efeito 3D */
 .project-card__content {
-    padding: 1.5rem;
-    transform: translateZ(20px);
+  padding: 1.5rem;
+  transform: translateZ(20px);
 }
 
 .project-card__title {
-    font-family: var(--font-titles);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
+  font-family: var(--font-titles);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
 }
 
 .project-card__tags {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-/* Estilo das "pílulas" de tecnologia */
 .project-card__tags span {
-    background: var(--gradient-background);
-    color: #fff;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
+  background: var(--gradient-background);
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
 }
 
 .project-card__links {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
-/* ==================== SECÇÃO CONTACTO ==================== */
-
+/* ==================== CONTACTO E FOOTER ==================== */
 .contact__container {
-  /* Centraliza todo o conteúdo (título, parágrafo e botão) desta secção */
   text-align: center;
-
-   /* Define uma largura máxima para o conteúdo de texto, 
-       melhorando a legibilidade em ecrãs muito largos.
-    */
-    max-width: 600px;
+  max-width: 600px;
 }
 
-.contact__decription {
-  /* adiciona um espaçamento abaixo do parágrafo, antes do botão */
+.contact__description {
   margin-bottom: 2rem;
 }
-
-/* ==================== RODAPÉ (FOOTER) ==================== */
 
 .footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-align: center;
   font-size: 0.9rem;
-
-/* Cria uma linha subtil no topo do rodapé para o separar visualmente do resto do conteúdo */
   border-top: 1px solid var(--color-border);
 }
-  
-    
 
+/* ==================== ANIMAÇÕES DE SCROLL ==================== */
+/* ==================== CONFIGURAÇÕES GERAIS E VARIÁVEIS ==================== */
+:root {
+  --gradient-start: #3498DB;
+  --gradient-end: #8E44AD;
+  --gradient-background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  --font-titles: 'Poppins', sans-serif;
+  --font-body: 'Lato', sans-serif;
+}
 
+/* ==================== TEMAS ==================== */
+body.dark-theme {
+  --color-background: #0D1117;
+  --color-card-background: #161B22;
+  --color-text: #E0E0E0;
+  --color-border: #30363d;
+  --color-header-bg: rgba(13, 17, 23, 0.8);
+  background-color: #0D1117;
+  background-image:
+    radial-gradient(at 80% 20%, hsla(215, 70%, 30%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 20% 80%, hsla(285, 70%, 30%, 0.25) 0px, transparent 50%);
+}
 
+body.light-theme {
+  --color-background: #F4F6F8;
+  --color-card-background: #FFFFFF;
+  --color-text: #2c3e50;
+  --color-border: #E0E0E0;
+  --color-header-bg: rgba(255, 255, 255, 0.8);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Cpath d='M0 2a2 2 0 0 0 4 0a2 2 0 0 0-4 0z' fill='%232c3e50' opacity='0.05'/%3E%3C/svg%3E");
+}
 
+/* ==================== RESET BÁSICO E ESTILOS GLOBAIS ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
 
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
 
+a {
+  color: var(--gradient-start);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--gradient-end);
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.section {
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section__title {
+  font-family: var(--font-titles);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* ==================== CABEÇALHO E NAVEGAÇÃO ==================== */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  font-family: var(--font-titles);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__list {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav__link {
+  color: var(--color-text);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-background);
+  transition: width 0.3s ease-in-out;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* ==================== SELETOR DE TEMA ==================== */
+.theme-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text);
+}
+
+.theme-toggle__moon {
+  display: none;
+}
+
+body.light-theme .theme-toggle__moon {
+  display: block;
+}
+body.light-theme .theme-toggle__sun {
+  display: none;
+}
+body.dark-theme .theme-toggle__sun {
+  display: block;
+}
+body.dark-theme .theme-toggle__moon {
+  display: none;
+}
+
+/* ==================== SECÇÃO HERO ==================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero__title {
+  font-family: var(--font-titles);
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+body.dark-theme .hero__title {
+  background: var(--gradient-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ==================== BOTÕES ==================== */
+.button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+  will-change: transform;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.2);
+}
+
+.button--primary {
+  background-image: var(--gradient-background);
+  color: #fff;
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border-image: var(--gradient-background);
+  border-image-slice: 1;
+  border-width: 2px;
+}
+
+.button--primary:hover,
+.button--secondary:hover {
+  color: #fff;
+}
+
+.button--secondary:hover {
+  background: var(--gradient-background);
+  border-image: none;
+  border-color: transparent;
+}
+
+/* ==================== SECÇÃO PROJETOS ==================== */
+.projects__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: var(--color-card-background);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  will-change: transform;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+body.dark-theme .project-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .project-card {
+  box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
+}
+
+body.light-theme .project-card:hover {
+  box-shadow: 0 10px 20px rgba(44, 62, 80, 0.15);
+}
+
+.project-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-card__content {
+  padding: 1.5rem;
+  transform: translateZ(20px);
+}
+
+.project-card__title {
+  font-family: var(--font-titles);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.project-card__tags {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-card__tags span {
+  background: var(--gradient-background);
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.project-card__links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ==================== CONTACTO E FOOTER ==================== */
+.contact__container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.contact__description {
+  margin-bottom: 2rem;
+}
+
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ==================== ANIMAÇÕES DE SCROLL ==================== */
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+  will-change: opacity, filter, transform;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
