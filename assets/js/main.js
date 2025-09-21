@@ -30,20 +30,21 @@ const tiltcards = document.querySelectorAll('.project-card');
 // criamos uma função quee sabe como ativar e desativar o efeito
 function handleTiltEffect() {
   //Se o ecrã for largo (Desktop)
-  if(window.innerWidth > 768) {
+  if(window.innerWidth > 992) {
     //Inicializa o efeito de tilt em todos os cartões
     VanillaTilt.init(tiltcards, {
       max: 15, 
       speed: 400,
       glare: true, 
-      "max-glare": 0.5
+      "max-glare": 0.5,
+      gyroscope: false,
     });
   } else {
     // Se o ecrã for pequeno (telemóvel/tablet)...
     // Passamos por cada cartão para desativar o efeito
     tiltcards.forEach(card => {
-      if (card.VanillaTilt) {
-        card.VanillaTilt.destroy();
+      if (card.vanillaTilt) {
+        card.vanillaTilt.destroy();
       }
     });
   }
@@ -90,6 +91,25 @@ hiddenElements.forEach((el) => observer.observe(el));
 const fab = document.getElementById('whatsapp-fab');
 const modal = document.getElementById('whatsapp-modal');
 const closeModal = document.getElementById('whatsapp-modal-close'); 
+
+// Adiciona uma verificação para cada elemento antes de adicionar o "ouvinte"
+if (fab) {
+    fab.addEventListener('click', () => {
+        modal.classList.add('modal--active');
+    });
+}
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('modal--active');
+    });
+}
+if (modal) {
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.remove('modal--active');
+        }
+    });
+}
 
 // 2. Ouvir por clique no botão flutuante para abrir o modal 
 fab.addEventListener('click', () => {
