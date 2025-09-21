@@ -589,6 +589,61 @@ body.dark-theme .hero__title {
   border-color: transparent;
 }
 
+/* ==================== SECÇÃO SOBRE MIM ==================== */
+.about__container {
+  display: grid; /* Usamos Grid para criar as duas colunas*/
+  grid-template-columns: 1fr 2fr; /* A 1ª coluna (imagem) ocupa 1 parte, a 2ª (texto) ocupa 2 partes do espaço */
+  align-items: center;
+  gap: 3rem;
+}
+
+.about__image-wrapper {
+  width: 100%;
+  min-width: 300px;
+  justify-self: center;
+}
+
+.about__image {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about__description {
+  margin-bottom: 2rem;
+}
+
+.about__skills-title {
+  font-family: var(--font-titles);
+  margin-bottom: 1rem;
+}
+
+.about__skills-list {
+  display: flex; /*coloca skills lado a lado*/
+  flex-wrap: wrap; /*Permitem que as skills quebrem para a linha de baixo se não houver espaço*/
+  gap: 0.75rem; /*Espaçamento entre as skills */
+}
+
+.about__skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about__skill-item img {
+  width: 40px;
+  height: 40px;
+}
+
+/* --- O Truque para o Modo Escuro --- */
+/* Alguns logos (como o do GitHub) são pretos e desapareceriam no nosso fundo escuro.
+   Esta regra CSS usa um filtro para inverter a cor dos logos APENAS no modo escuro,
+   tornando-os brancos e perfeitamente visíveis!
+*/
+body.dark-theme .about__skill-item img {
+    filter: invert(1);
+}
+
 /* ==================== SECÇÃO PROJETOS ==================== */
 .projects__container {
   display: grid;
