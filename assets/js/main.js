@@ -60,3 +60,28 @@ const hiddenElements = document.querySelectorAll('.hidden');
 // 3. Iniciar a Observação 
 // dizemos ao nosso observador para começar a "vigiar" cada um dos elementos que selecionamos. 
 hiddenElements.forEach((el) => observer.observe(el)); 
+
+/* ==================== LÓGICA DO WHATSAPP POPUP ==================== */
+
+// 1. Selecionar os elementos do pop-up
+const fab = document.getElementById('whatsapp-fab');
+const modal = document.getElementById('whatsapp-modal');
+const closeModal = document.getElementById('whatsapp-modal-close'); 
+
+// 2. Ouvir por clique no botão flutuante para abrir o modal 
+fab.addEventListener('click', () => {
+  modal.classList.add('modal--active'); 
+});
+
+//3. Ouvir por clique no botão 'X' para FECHAR o modal
+closeModal.addEventListener('click', () => {
+  modal.classList.remove('modal--active');
+});
+
+//Opcional: Fechar o modal se o utilizador clicar fora da caixa de Conteúdo 
+modal.addEventListener('click', (event) => {
+  // Se o clique foi no fundo escuro (o próprio modal) e não nos seus filhos
+  if (event.target === modal) {
+    modal.classList.remove('modal--active');
+  }
+});
