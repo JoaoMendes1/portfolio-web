@@ -24,13 +24,36 @@ themeToggle.addEventListener('click', () => {
 }); 
 
 /* ==================== LÓGICA PARA EFEITO TILT 3D NOS CARDS ==================== */
+// Primeiro, selecioinamos todos os cartões que podem ter o efeito
+const tiltcards = document.querySelectorAll('.project-card'); 
 
-VanillaTilt.init(document.querySelectorAll(".project-card"), {
-  max: 15, 
-  speed: 400, 
-  glare: true, 
-  "max-glare": 0.5
-});
+// criamos uma função quee sabe como ativar e desativar o efeito
+function handleTiltEffect() {
+  //Se o ecrã for largo (Desktop)
+  if(window.innerWidth > 768) {
+    //Inicializa o efeito de tilt em todos os cartões
+    VanillaTilt.init(tiltcards, {
+      max: 15, 
+      speed: 400,
+      glare: true, 
+      "max-glare": 0.5
+    });
+  } else {
+    // Se o ecrã for pequeno (telemóvel/tablet)...
+    // Passamos por cada cartão para desativar o efeito
+    tiltcards.forEach(card => {
+      if (card.VanillaTilt) {
+        card.VanillaTilt.destroy();
+      }
+    });
+  }
+}
+
+// 1. Executa a função uma vez quando a página carrega
+handleTiltEffect();
+
+// 2. Adiciona um "ouvinte" que executa a função novamente SEMPRE que o tamanho da janela muda
+window.addEventListener('resize', handleTiltEffect);
 
 /* ==================== LÓGICA PARA ANIMAÇÃO DE SCROLL - INÍCIO ==================== */
 
