@@ -88,7 +88,7 @@ modal.addEventListener('click', (event) => {
 
 /* ==================== LÓGICA DO CARROSSEL DE PROJETOS (SWIPER) ==================== */
 
-// Funão para igualar a altura dos cartões (Versão compacta)
+// Função para igualar a altura dos cartões (Versão compacta)
 function equalizeCardHeights(swiper) {
   setTimeout(() => {
     const cards = Array.from(swiper.el.querySelectorAll('.project-card'));

@@ -624,6 +624,8 @@ body.light-theme .project-card:hover {
 .swiper-button-prev {
     /* Usa a cor do nosso gradiente para as setas, para manter a consistência do design */
     color: var(--gradient-start);
+
+     --swiper-navigation-size: 28px;
 }
 
 /* Garante que o container do Swiper não quebre o layout */
