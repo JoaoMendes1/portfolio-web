@@ -557,6 +557,10 @@ body.light-theme .project-card:hover {
   height: 28px;
 }
 
+.whatsapp-fab svg path {
+  fill: #fff;
+}
+
 /* O Modal/Pop-up (Overlay e Conteúdo) */
 .whatsapp-modal {
   position: fixed;
