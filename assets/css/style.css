@@ -617,5 +617,18 @@ body.light-theme .project-card:hover {
   opacity: 1;
 }
 
+/* ==================== ESTILOS DO CARROSSEL (SWIPER) ==================== */
+
+
+.swiper-button-next,
+.swiper-button-prev {
+    /* Usa a cor do nosso gradiente para as setas, para manter a consistência do design */
+    color: var(--gradient-start);
+}
+
+/* Garante que o container do Swiper não quebre o layout */
+.swiper.container {
+    overflow: hidden;
+}
 
 

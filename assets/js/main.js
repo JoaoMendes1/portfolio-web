@@ -85,3 +85,43 @@ modal.addEventListener('click', (event) => {
     modal.classList.remove('modal--active');
   }
 });
+
+/* ==================== LÓGICA DO CARROSSEL DE PROJETOS (SWIPER) ==================== */
+
+// Funão para igualar a altura dos cartões (Versão compacta)
+function equalizeCardHeights(swiper) {
+  setTimeout(() => {
+    const cards = Array.from(swiper.el.querySelectorAll('.project-card'));
+    if (!cards.length) return;
+
+    // 1. Reseta a altura de todos os cartões 
+    cards.forEach(card => card.style.height = 'auto');
+    // 2. Encontra a altura máxima 
+    const maxHeight = Math.max(...cards.map(card => card.offsetHeight));
+    // 3. Aplica a altura máxima a todos 
+    cards.forEach(card => card.style.height = `${maxHeight}px`);
+  }, 500);
+}
+
+// Inicialização do Swiper 
+const swiper = new Swiper('.swiper', {
+  direction: 'horizontal', 
+  loop: true, 
+  slidesPerView: 1, 
+  spaceBetween: 32, 
+  breakpoints: {
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  // Eventos que chamam a nossa função para garantir que tudo fique alinhado 
+  on: {
+    init: equalizeCardHeights, 
+    resize: equalizeCardHeights,
+    slideChange: equalizeCardHeights,
+  }
+});
+
