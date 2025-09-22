@@ -33,7 +33,7 @@ function handleTiltEffect() {
   if(window.innerWidth > 992) {
     //Inicializa o efeito de tilt em todos os cartões
     VanillaTilt.init(tiltcards, {
-      max: 15, 
+      max: 10, 
       speed: 400,
       glare: true, 
       "max-glare": 0.5,
